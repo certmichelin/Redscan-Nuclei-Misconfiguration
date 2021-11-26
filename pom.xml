@@ -14,8 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
         <!-- Define dependencies versions -->
-        <redscan-utils.version>3.1.1</redscan-utils.version>
-        <log4j-layout-template-json.version>2.14.0</log4j-layout-template-json.version>
+        <redscan-utils.version>4.0.2</redscan-utils.version>
+        
         <json-simple.version>1.1.1</json-simple.version>
         <!-- Define test dependencies versions -->
         
@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.1</version>
+        <version>2.5.5</version>
     </parent>
          
      <!-- Manage repository for REDSCAN UTILS -->
@@ -66,8 +66,7 @@
         
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-layout-template-json</artifactId>
-            <version>${log4j-layout-template-json.version}</version>
+            <artifactId>log4j-layout-template-json</artifactId>        
         </dependency>
         
         <dependency>
