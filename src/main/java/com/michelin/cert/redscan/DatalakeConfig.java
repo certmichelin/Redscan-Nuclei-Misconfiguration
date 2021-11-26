@@ -30,19 +30,19 @@ import org.springframework.context.annotation.Configuration;
  * @author Maxime ESCOURBIAC
  */
 @Configuration
-public class DatalakeConfig extends DatalakeStorage {
+public class DatalakeConfig {
 
   @Value("${datalake.elastic.url}")
   private String elasticSearchUrlProperty;
 
   @Autowired
   public DatalakeConfig() {
-    super();
+    
   }
 
   @PostConstruct
   public void initDatalakeStorage() {
-    elasticSearchUrl = elasticSearchUrlProperty;
+    DatalakeStorage.init(elasticSearchUrlProperty);
   }
 
 }
