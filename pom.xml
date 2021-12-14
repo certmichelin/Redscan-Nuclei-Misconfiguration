@@ -15,8 +15,8 @@
     
         <!-- Define dependencies versions -->
         <redscan-utils.version>4.2.0</redscan-utils.version>
-        
         <json-simple.version>1.1.1</json-simple.version>
+        <log4j2.version>2.15.0</log4j2.version>
         <!-- Define test dependencies versions -->
         
         <!-- Define plugins versions -->
