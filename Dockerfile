@@ -1,4 +1,4 @@
-FROM ghcr.io/certmichelin/redscan-nuclei-base/redscan-nuclei-base:2.6.3.0
+FROM ghcr.io/certmichelin/redscan-nuclei-base/redscan-nuclei-base:2.6.7.0
 
 #Copy the war.
 ARG JAR_FILE=target/app.jar
