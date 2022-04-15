@@ -33,6 +33,7 @@ import org.json.simple.parser.ParseException;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -49,9 +50,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class ScanApplication {
 
-  //Only required if pushing data to queues
   private final RabbitTemplate rabbitTemplate;
 
+  @Value("${nuclei.exclude.template.list}")
+  private String exclusionList;
+  
   /**
    * Constructor to init rabbit template. Only required if pushing data to queues
    *
@@ -95,7 +98,7 @@ public class ScanApplication {
       httpMessage.fromJson(message);
       LogManager.getLogger(ScanApplication.class).info(String.format("Check misconfiguration from : %s", httpMessage.toUrl()));
       OsCommandExecutor osCommandExecutor = new OsCommandExecutor();
-      String command = String.format("/nucleilauncher %s misconfiguration/", httpMessage.toUrl());
+      String command = String.format("/nucleilauncher %s misconfiguration/ %s", httpMessage.toUrl(), exclusionList);
       StreamGobbler streamGobbler = osCommandExecutor.execute(command);
       if (streamGobbler != null) {
         LogManager.getLogger(ScanApplication.class).info(String.format("Nuclei exited with status %s ", streamGobbler.getExitStatus()));
